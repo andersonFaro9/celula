@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1f9fc4</color>
+    <color name="colorPrimaryPubliCart">#1f9fc4</color>
+    <color name="colorPrimaryRosaDeSaron">#01a75b</color>
+
+    <color name="title_color_vintenove">#01a75b</color>
+
+    <color name="colorPrimaryBios">#0098da</color>
+    <color name="colorPrimaryGreg">#79661c</color>
+    <color name="colorPrimaryEvolution">#daa625</color>
+    <color name="colorPrimaryconexao">#c2270c</color>
+    <color name="colorPrimaryBlueWay">#0102d8</color>
+    <color name="colorPrimaryVinteNove">#000</color>
+    <color name="colorPrimarySpeednet">#f58634</color>
+    <color name="colorPrimaryAutoEscolaFranca">#C49102</color>
+
+    <color name="colorPrimaryDinei">#EF3A4B</color>
+    <!--<color name="colorPrimaryJobSat">#e71212</color>-->
+    <color name="colorPrimaryDocesCake">#e1599d</color>
+    <color name="colorPrimaryQuadrangular">#8d02ff</color>
+    <color name="colorPrimaryEsound">#828282</color>
+    <color name="colorPrimaryInove">#2c4e58</color>
+    <color name="colorPrimaryEpg">#f5c919</color>
+
+    <color name="colorPrimaryFundoFotos">#000000</color>
+
+    <color name="colorPrimaryFundoListView">#ece7e7</color>
+
+    <color name="colorPrimaryJsBarbearia">#bc3e3e</color>
+
+    <color name="colorPrimaryy">#297AE0</color>
+    <color name="colorPrimaryDark">#8B8A8A</color>
+    <color name="colorAccent">#8B8A8A</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="album_title">#4c4c4c</color>
+
+
+    <color name="color_titulo">#297AE0</color>
+
+    <color name="color_hint">#1E000000</color>
+
+    <color name="botao_enviar">#E0E0E0</color>
+
+
+    <color name="color_loading">#e0267d</color>
+    <color name="background_splash">#e0267d</color>
+    <color name="primary_material_dark">#fff</color>
+    <color name="primary_material_dark_text_selected_for_background_lilac">#3a011c</color>
+    <color name="primary_material_dark_text_selected_for_background_white">#0bbae2</color>
+</resources>
