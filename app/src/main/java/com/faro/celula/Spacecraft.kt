@@ -4,5 +4,6 @@ import io.realm.RealmObject
 
 open class Spacecraft : RealmObject() {
 
-    var name: String? = null
+    var nota: String? = null
+    var detalhes: String? = null
 }

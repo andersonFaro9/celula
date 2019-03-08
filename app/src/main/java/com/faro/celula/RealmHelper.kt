@@ -13,17 +13,23 @@ class RealmHelper(internal var realm: Realm?) {
 
     }
 
-    //READ
-    fun retrieve(): ArrayList<String> {
-        val spacecraftNames = ArrayList<String>()
+
+    fun retrieve():ArrayList<TesteModel> {
+        val spacecraftNames = ArrayList<TesteModel>()
         val spacecrafts = realm?.where(Spacecraft::class.java)?.findAll()
 
         if (spacecrafts != null) {
             for (s in spacecrafts) {
-                spacecraftNames.add(s?.name.toString())
+                spacecraftNames.add(TesteModel(s?.nota.toString(),s?.detalhes.toString()))
             }
         }
 
         return spacecraftNames
     }
+//    fun retrieve():  List<TesteModel> =  realm?.where(Spacecraft::class.java)?.findAll()?.map {
+//
+//        TesteModel(it?.nota.toString(), it?.detalhes.toString())
+//    }.orEmpty()
+
+
 }

@@ -15,11 +15,11 @@
 <!--<resources>-->
 
 <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
-<!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--<style nota="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
 <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-<!--<item name="colorPrimary">@color/colorPrimaryDark</item>-->
-<!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--<item name="colorAccent">@color/colorAccent</item>-->
+<!--<item nota="colorPrimary">@color/colorPrimaryDark</item>-->
+<!--<item nota="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--<item nota="colorAccent">@color/colorAccent</item>-->
 
 <!--</style>-->
 

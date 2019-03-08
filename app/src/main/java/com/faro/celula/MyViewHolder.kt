@@ -5,10 +5,8 @@ import android.view.View
 import android.widget.TextView
 
 class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    internal var nameTxt: TextView
+    internal var notaTxt: TextView = itemView.findViewById<View>(R.id.notaTxt) as TextView
+    internal var detalhesTxt: TextView = itemView.findViewById<View>(R.id.detalhes) as TextView
 
-    init {
 
-        nameTxt = itemView.findViewById<View>(R.id.nameTxt) as TextView
-    }
 }

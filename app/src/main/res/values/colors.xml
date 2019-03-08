@@ -16,7 +16,7 @@
     <color name="colorPrimaryAutoEscolaFranca">#C49102</color>
 
     <color name="colorPrimaryDinei">#EF3A4B</color>
-    <!--<color name="colorPrimaryJobSat">#e71212</color>-->
+    <!--<color nota="colorPrimaryJobSat">#e71212</color>-->
     <color name="colorPrimaryDocesCake">#e1599d</color>
     <color name="colorPrimaryQuadrangular">#8d02ff</color>
     <color name="colorPrimaryEsound">#828282</color>
@@ -32,6 +32,13 @@
     <color name="colorPrimaryy">#297AE0</color>
     <color name="colorPrimaryDark">#8B8A8A</color>
     <color name="colorAccent">#8B8A8A</color>
+
+
+
+    <color name="background_botao_salva">#1D8B8A8A</color>
+
+    <color name="color_botao_salva">#658B8A8A</color>
+    <color name="color_botao_cancela">#658B8A8A</color>
     <color name="viewBg">#f1f5f8</color>
     <color name="album_title">#4c4c4c</color>
 
