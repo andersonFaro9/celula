@@ -9,17 +9,15 @@ import android.support.v7.widget.Toolbar
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_add.*
-import java.util.ArrayList
 
 class AddActivity : AppCompatActivity() {
 
     var realm: Realm? = null
-    lateinit var spacecrafts: List<TesteModel>
-    internal var adapter: MyAdapter? = null
+    lateinit var spacecrafts: List<Model>
+    internal var adapter: NotaAdapter? = null
     internal var rv: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +30,8 @@ class AddActivity : AppCompatActivity() {
         realm = Realm.getDefaultInstance()
 
         //RETRIEVE
-        val helper = RealmHelper(realm)
-        spacecrafts = helper.retrieve()
+        val helper = Crud(realm)
+        spacecrafts = helper.recupera()
 
         displayInputDialog()
         cancela()
@@ -98,29 +96,9 @@ class AddActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when  {
-
-//            item.itemId == R.id.fechar -> {
-//
-//                return true
-//            }
-
-        }
-
-
-
-        return super.onOptionsItemSelected(item)
-    }
 
     fun cancela() = cancela.setOnClickListener {    finish()    }
-
-
 
     fun salvaDados() {
         saveBtn?.setOnClickListener {
@@ -128,24 +106,24 @@ class AddActivity : AppCompatActivity() {
             when {
                 !notaEd.text.isEmpty() and !detalhesEd.text.isEmpty() -> {
 
-                    val s = Spacecraft()
+                    val s = Nota()
                     s.nota = notaEd?.text.toString()
                     s.detalhes = detalhesEd?.text.toString()
 
-                    val helper = RealmHelper(realm)
-                    helper.save(s)
+                    val helper = Crud(realm)
+                    helper.salva(s)
 
                     notaEd?.setText("")
                     detalhesEd?.setText("")
 
-                    spacecrafts = helper.retrieve()
-                    adapter = MyAdapter(this@AddActivity, spacecrafts)
+                    spacecrafts = helper.recupera()
+                    adapter = NotaAdapter(this@AddActivity, spacecrafts)
                     rv?.adapter = adapter
 
 
                     startActivity(Intent(this, MainActivity::class.java))
                 }
-                   //Se quiser manter o texto que acabou de ser digitado -> nameEditTxt?.setText(s.nota)
+
             }
         }
     }

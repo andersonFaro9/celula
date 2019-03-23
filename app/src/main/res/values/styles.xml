@@ -11,16 +11,3 @@
         <item name="windowNoTitle">true</item>
     </style>
 </resources>
-
-<!--<resources>-->
-
-<!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
-<!--<style nota="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-<!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-<!--<item nota="colorPrimary">@color/colorPrimaryDark</item>-->
-<!--<item nota="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--<item nota="colorAccent">@color/colorAccent</item>-->
-
-<!--</style>-->
-
-<!--</resources>-->
