@@ -1,15 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
-      xmlns:tools="http://schemas.android.com/tools"
-      tools:context="com.example.aleksefo.deardiary.activity.MainActivity">
+      xmlns:tools="http://schemas.android.com/tools">
     <item
             android:id="@+id/action_bytitle"
             android:orderInCategory="100"
-            android:title="@string/action_bytitle"
-            app:showAsAction="never" />
+            android:title="teste"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_ideias"
+            />
     <item
             android:id="@+id/action_bydate"
             android:orderInCategory="100"
-            android:title="@string/action_bydate"
+            android:title="teste"
             app:showAsAction="never" />
 </menu>

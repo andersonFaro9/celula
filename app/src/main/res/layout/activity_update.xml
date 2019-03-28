@@ -1,75 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent" android:id="@+id/linearLayout">
-
-    <android.support.design.widget.AppBarLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/appBarLayout" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
-
-        <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-        />
-
-    </android.support.design.widget.AppBarLayout>
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="24dp">
 
     <EditText
-            android:id="@+id/notaEd"
-            android:layout_width="0dp"
-            android:layout_height="49dp"
-            android:singleLine="true"
-            android:hint="Sua nota"
-            android:textSize="14dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+            android:layout_marginBottom="12dp"
+            android:id="@+id/titleInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            tools:ignore="titleInput"
+            android:hint="titulo"/>
 
+    <EditText
+            android:layout_marginBottom="12dp"
+            android:id="@+id/descriptionInput"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:inputType="text|textMultiLine"
+            android:hint="detalhes"
+            android:gravity="start|top"
+    />
 
     <Button
-            android:text="X"
+            android:id="@+id/enviar"
+            android:hint="enviar"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/ic_cancel"
-            android:id="@+id/cancela"
-            android:textColor="@color/color_botao_cancela"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="@+id/detalhesEd"/>
-
-    <Button android:id="@+id/saveBtn"
-            android:layout_width="82dp"
-            android:layout_height="26dp"
-            android:text="Salvar"
-            android:shadowColor="@color/color_titulo"
-            android:enabled="false"
-            android:textSize="14dp"
-            android:clickable="true"
-            android:background="@null"
-            android:textColor="@color/color_botao_salva"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:textAlignment="textStart" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/detalhesEd"/>
-    <EditText
-            android:layout_width="0dp"
-            android:layout_height="82dp"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:id="@+id/detalhesEd" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/notaEd" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:hint="detalhes de sua nota"
-            android:textAlignment="textStart"/>
-
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

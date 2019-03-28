@@ -6,128 +6,138 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_add.*
-import kotlinx.android.synthetic.main.content_main.*
+import java.util.*
 
-class AddActivity : AppCompatActivity() {
 
-    var realm: Realm? = null
-    lateinit var modelList: List<Model>
-    internal var adapter: NotaAdapter? = null
+class AddTodoActivity : AppCompatActivity() {
+    val realm by lazy { Realm.getDefaultInstance() }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_add)
 
-        setSupportActionBar(toolbar)
+        supportActionBar?.elevation = 0F
 
-        realm = Realm.getDefaultInstance()
-
-        val crud = Crud(realm)
-
-        modelList = crud.recupera()
-
-        valida()
-
-        cancela()
+        show()
+        salvaDados()
 
     }
 
-    private fun valida() {
 
+
+
+    fun show () {
         notaEd.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                saveBtn.isEnabled = false
+                saveBtn.visibility = View.INVISIBLE
             }
 
             override fun afterTextChanged(s: Editable?) {
 
-                saveBtn.isEnabled = true
-                cancela.visibility = View.VISIBLE
+                saveBtn.visibility = View.VISIBLE
                 saveBtn.setTextColor(Color.parseColor("#297AE0"))
 
                 when {
                     notaEd.text.isEmpty() -> {
-                        saveBtn.setTextColor(Color.parseColor("#8B8A8A"))
-                        cancela.visibility = View.INVISIBLE
+                        saveBtn.visibility = View.INVISIBLE
                     }
+
                     else -> salvaDados()
                 }
 
             }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+
+            }
 
         })
-
 
 
         detalhesEd.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                saveBtn.isEnabled = false
+                saveBtn.visibility = View.INVISIBLE
             }
 
             override fun afterTextChanged(s: Editable?) {
 
-                saveBtn.isEnabled = true
-                cancela.visibility = View.VISIBLE
+                saveBtn.visibility = View.VISIBLE
                 saveBtn.setTextColor(Color.parseColor("#297AE0"))
 
                 when {
                     detalhesEd.text.isEmpty() -> {
-                        saveBtn.setTextColor(Color.parseColor("#8B8A8A"))
-                        cancela.visibility = View.INVISIBLE
+                        saveBtn.visibility = View.INVISIBLE
                     }
+
                     else -> salvaDados()
                 }
 
             }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+
+            }
 
         })
 
+
+
+
     }
 
-    fun cancela() {
-        cancela.setOnClickListener {
-            finish()
-        }
-    }
+    private fun salvaDados() {
 
-    fun salvaDados() {
-        saveBtn?.setOnClickListener  {
+        saveBtn.setOnClickListener {
 
-            when {
-                !notaEd.text.isEmpty() and !detalhesEd.text.isEmpty() -> {
+            if (!notaEd.text.isEmpty() && !detalhesEd.text.isEmpty()) {
 
-                    //Salva
-                    val nota = Nota()
-                    nota.nota = notaEd?.text.toString()
-                    nota.detalhes = detalhesEd?.text.toString()
+                this.realm.executeTransaction {
+                    val todo = this.realm.createObject(Nota::class.java, UUID.randomUUID().toString())
 
-                    val crud = Crud(realm)
-                    crud.salva(nota)
-
-                    notaEd?.setText("")
-                    detalhesEd?.setText("")
-
-                    //Recupera
-                    modelList = crud.recupera()
-
-                    adapter = NotaAdapter(this@AddActivity, modelList)
-
-                    rv?.adapter = adapter
+                    todo.nota = notaEd.text.toString()
+                    todo.detalhes = detalhesEd.text.toString()
 
                     startActivity(Intent(this, MainActivity::class.java))
                 }
 
+            } else {
+                Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_add, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when {
+
+            item.itemId == R.id.add -> {
+                finish()
+                return true
+            }
+
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
 }

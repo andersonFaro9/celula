@@ -6,40 +6,76 @@ import android.support.v7.app.AppCompatActivity
 import io.realm.Realm
 
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.Menu
+import android.view.MenuItem
+
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : AppCompatActivity() {
 
-    lateinit var realm: Realm
-    lateinit var modelList: List<Model>
-    internal var notaAdapter: NotaAdapter? = null
+class MainActivity : AppCompatActivity(), OnDeleteListener {
+
+    val realm by lazy {
+        Realm.getDefaultInstance()
+
+    }
+
+    lateinit var adapter: NotaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.elevation = 0F
+
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(toolbar)
+        fab.setOnClickListener {
 
-        val layoutManager = GridLayoutManager(this, 2)
-        rv?.layoutManager = layoutManager
+            addTodo()
+        }
 
-        realm = Realm.getDefaultInstance()
+        val todos: ArrayList<Nota> = this.getTodos()
+        adapter = NotaAdapter(todos)
 
-        val crud = Crud(realm)
-        modelList = crud.recupera()
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        recyclerView.adapter = adapter
 
-        notaAdapter = NotaAdapter(this, modelList)
-        rv?.adapter = notaAdapter
+    }
 
-        adicionar()
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when  {
+
+            item.itemId == R.id.action_bytitle -> {
+               // startActivity(Intent(this, AutoEscolaFrancaEnderecoActivity::class.java))
+                return true
+            }
+
+
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun addTodo () {
+
+        startActivity(Intent(this, AddTodoActivity::class.java))
+
     }
 
 
-    fun adicionar() {
-        fab.setOnClickListener {
-            startActivity(Intent(this, AddActivity::class.java))
-        }
+    private fun getTodos (): ArrayList<Nota> = ArrayList(this.realm.where(Nota::class.java).findAll())
 
+
+    override fun setOnDeleteListener() {
+
+        this.adapter.items = getTodos()
+
+        this.adapter.notifyDataSetChanged()
     }
 }

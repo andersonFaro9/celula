@@ -1,14 +1,9 @@
 <resources>
-    <string name="app_name">Dear Diary</string>
-    <string name="title_activity_new_activity">New Entry</string>
-
-    //menus
-    <string name="action_bydate">Sort by Date</string>
-    <string name="action_bytitle">Sort by Title</string>
-    <string name="action_edit">Edit</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_share">Share</string>
-
-    <string name="add_description">Write something</string>
-    <string name="add_title">Think about a title</string>
+    <string name="app_name">NotaCelula</string>
+    <string name="add_todo_str">teste</string>
+    <string name="app_title">NotaCelula</string>
+    <string name="title_hint">Judul</string>
+    <string name="description_hint">Deskripsi</string>
+    <string name="submit_hint">Tambahkan</string>
+    <string name="add_todo_title">NotaCelula</string>
 </resources>

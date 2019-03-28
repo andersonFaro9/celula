@@ -2,11 +2,11 @@ package com.faro.celula
 
 import android.support.design.widget.CoordinatorLayout
 import android.support.design.widget.FloatingActionButton
+import android.view.View
 
 class ScrollAwareFABBehavior : FloatingActionButton.Behavior() {
-    // ...
 
-    fun onNestedScroll(
+    override fun onNestedScroll(
         coordinatorLayout: CoordinatorLayout, child: FloatingActionButton,
         target: View, dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int
     ) {
