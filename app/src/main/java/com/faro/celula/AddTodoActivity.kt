@@ -4,41 +4,39 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Menu
 import android.view.View
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_add.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class AddActivity : AppCompatActivity() {
 
     var realm: Realm? = null
-    lateinit var spacecrafts: List<Model>
+    lateinit var modelList: List<Model>
     internal var adapter: NotaAdapter? = null
-    internal var rv: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+
         setSupportActionBar(toolbar)
 
         realm = Realm.getDefaultInstance()
 
-        //RETRIEVE
-        val helper = Crud(realm)
-        spacecrafts = helper.recupera()
+        val crud = Crud(realm)
 
-        displayInputDialog()
+        modelList = crud.recupera()
+
+        valida()
+
         cancela()
 
     }
 
-    private fun displayInputDialog() {
+    private fun valida() {
 
         notaEd.addTextChangedListener(object : TextWatcher {
 
@@ -96,30 +94,35 @@ class AddActivity : AppCompatActivity() {
 
     }
 
-
-
-    fun cancela() = cancela.setOnClickListener {    finish()    }
+    fun cancela() {
+        cancela.setOnClickListener {
+            finish()
+        }
+    }
 
     fun salvaDados() {
-        saveBtn?.setOnClickListener {
+        saveBtn?.setOnClickListener  {
 
             when {
                 !notaEd.text.isEmpty() and !detalhesEd.text.isEmpty() -> {
 
-                    val s = Nota()
-                    s.nota = notaEd?.text.toString()
-                    s.detalhes = detalhesEd?.text.toString()
+                    //Salva
+                    val nota = Nota()
+                    nota.nota = notaEd?.text.toString()
+                    nota.detalhes = detalhesEd?.text.toString()
 
-                    val helper = Crud(realm)
-                    helper.salva(s)
+                    val crud = Crud(realm)
+                    crud.salva(nota)
 
                     notaEd?.setText("")
                     detalhesEd?.setText("")
 
-                    spacecrafts = helper.recupera()
-                    adapter = NotaAdapter(this@AddActivity, spacecrafts)
-                    rv?.adapter = adapter
+                    //Recupera
+                    modelList = crud.recupera()
 
+                    adapter = NotaAdapter(this@AddActivity, modelList)
+
+                    rv?.adapter = adapter
 
                     startActivity(Intent(this, MainActivity::class.java))
                 }
