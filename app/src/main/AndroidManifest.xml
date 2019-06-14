@@ -2,10 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.faro.celula">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
     <application
             android:name=".Configuracao"
             android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/ic_celula"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
@@ -22,6 +28,8 @@
         <activity android:name=".AddTodoActivity"/>
         <activity android:name=".UpdateActivity"/>
 
+        <activity android:name=".RelatorioActivity"/>
+        <activity android:name=".PdfCreatorActivity"/>
 
     </application>
 

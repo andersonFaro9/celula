@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">NotaCelula</string>
-    <string name="add_todo_str">teste</string>
-    <string name="app_title">NotaCelula</string>
-    <string name="title_hint">Judul</string>
-    <string name="description_hint">Deskripsi</string>
-    <string name="submit_hint">Tambahkan</string>
-    <string name="add_todo_title">NotaCelula</string>
+    <string name="app_name">notaCelula</string>
+
+
+    <string name="texto_apresentacao">Organize aqui os detalhes da sua célula evangélica, a sua igreja expandida!</string>
+
+    <string name="texto_sobre">
+
+        Um aplicativo feito com carinho para você, cristão que acredita único e exclusivamente nas escrituras, que acredita que célula é igreja expandida,
+        e que independente de sua religião o aplicativo notaCelula te ajudará com detalhes de sua célula evangélica.
+
+    </string>
+
 </resources>

@@ -1,24 +1,29 @@
 package com.faro.celula
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.SystemClock
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_add.*
 import java.util.*
+import android.provider.AlarmClock
+
+
 
 
 class AddTodoActivity : AppCompatActivity() {
-    val realm by lazy { Realm.getDefaultInstance() }
 
+    val realm by lazy { Realm.getDefaultInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,29 +32,30 @@ class AddTodoActivity : AppCompatActivity() {
 
         supportActionBar?.elevation = 0F
 
-        show()
+        validaDados()
         salvaDados()
+
 
     }
 
 
 
+    fun validaDados() {
 
-    fun show () {
-        notaEd.addTextChangedListener(object : TextWatcher {
+        detalhes.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                saveBtn.visibility = View.INVISIBLE
+                salva.visibility = View.INVISIBLE
             }
 
             override fun afterTextChanged(s: Editable?) {
 
-                saveBtn.visibility = View.VISIBLE
-                saveBtn.setTextColor(Color.parseColor("#297AE0"))
+                salva.visibility = View.VISIBLE
+                salva.setTextColor(Color.parseColor("#297AE0"))
 
                 when {
-                    notaEd.text.isEmpty() -> {
-                        saveBtn.visibility = View.INVISIBLE
+                    detalhes.text.isEmpty() -> {
+                        salva.visibility = View.INVISIBLE
                     }
 
                     else -> salvaDados()
@@ -59,62 +65,28 @@ class AddTodoActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-
             }
 
         })
-
-
-        detalhesEd.addTextChangedListener(object : TextWatcher {
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                saveBtn.visibility = View.INVISIBLE
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-                saveBtn.visibility = View.VISIBLE
-                saveBtn.setTextColor(Color.parseColor("#297AE0"))
-
-                when {
-                    detalhesEd.text.isEmpty() -> {
-                        saveBtn.visibility = View.INVISIBLE
-                    }
-
-                    else -> salvaDados()
-                }
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-
-            }
-
-        })
-
-
-
 
     }
 
     private fun salvaDados() {
 
-        saveBtn.setOnClickListener {
+        salva.setOnClickListener {
 
-            if (!notaEd.text.isEmpty() && !detalhesEd.text.isEmpty()) {
+            if (!nota.text.isEmpty() && !detalhes.text.isEmpty()) {
 
                 this.realm.executeTransaction {
                     val todo = this.realm.createObject(Nota::class.java, UUID.randomUUID().toString())
 
-                    todo.nota = notaEd.text.toString()
-                    todo.detalhes = detalhesEd.text.toString()
+                    todo.nota = nota.text.toString()
+                    todo.detalhes = detalhes.text.toString()
 
                     startActivity(Intent(this, MainActivity::class.java))
+
                 }
 
-            } else {
-                Toast.makeText(this, "erro", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -122,7 +94,7 @@ class AddTodoActivity : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_add, menu)
+        menuInflater.inflate(R.menu.menu_form, menu)
         return true
     }
 
@@ -130,10 +102,12 @@ class AddTodoActivity : AppCompatActivity() {
 
         when {
 
-            item.itemId == R.id.add -> {
+            item.itemId == R.id.fechar -> {
                 finish()
                 return true
             }
+
+
 
         }
 

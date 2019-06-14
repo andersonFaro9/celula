@@ -1,16 +1,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools">
+
     <item
-            android:id="@+id/action_bytitle"
+            android:id="@+id/calendario"
             android:orderInCategory="100"
-            android:title="teste"
+            android:title="Calendário"
             app:showAsAction="always"
-            android:icon="@drawable/ic_ideias"
-            />
+            android:icon="@drawable/ic_alarm"
+    />
+
+
     <item
-            android:id="@+id/action_bydate"
+            android:id="@+id/relatorio"
             android:orderInCategory="100"
-            android:title="teste"
-            app:showAsAction="never" />
+            android:title="Calendário"
+            app:showAsAction="always"
+            android:icon="@drawable/ic_relatorio"
+    />
+
+
+
+
+
 </menu>
