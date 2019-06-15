@@ -16,6 +16,21 @@
             android:lines="5"
             >
     </EditText>
+
+
+
+    <EditText
+            android:id="@+id/teste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="..."
+            android:inputType="textMultiLine"
+            android:layout_margin="5dp"
+            android:padding="20dp"
+            android:lines="5"
+    >
+    </EditText>
     <Button
             android:id="@+id/salva_pdf"
             android:layout_width="wrap_content"

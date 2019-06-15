@@ -1,25 +1,41 @@
 package com.faro.celula
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.ShareActionProvider
+import android.view.Menu
 import android.widget.Toast
 import android.widget.Toast.*
 import kotlinx.android.synthetic.main.relatorio_activity.*
-import com.itextpdf.text.Document
-import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfWriter
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
+import android.support.v7.widget.SearchView
+import android.view.MenuItem
+import android.view.View
+import com.itextpdf.text.*
+import com.itextpdf.text.Phrase
+import com.itextpdf.text.pdf.PdfPCell
+import com.itextpdf.text.pdf.PdfPTable
+
+
+
 
 class RelatorioActivity : AppCompatActivity() {
 
     val STORAGE_CODE:Int = 100
+
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -35,6 +51,9 @@ class RelatorioActivity : AppCompatActivity() {
                     var permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
                     requestPermissions(permissions, STORAGE_CODE)
+
+
+
 
                 } else {
                     salvaPdf()
@@ -66,26 +85,51 @@ class RelatorioActivity : AppCompatActivity() {
 
     private fun salvaPdf() {
 
-        val mDoc = Document()
+        val mDoc = Document(PageSize.A4, 0f, 0f, 0f, 0f)
 
-        val mFileName = SimpleDateFormat("yyyy_MMdd_HH_mmsss", Locale.getDefault()).format(System.currentTimeMillis())
 
-        val mFilePath = Environment.getExternalStorageDirectory().toString() + "/" + mFileName + ""
+        val mFileName = SimpleDateFormat( "yyyy-MM-dd hh:mm", Locale.getDefault()).format(System.currentTimeMillis())
+
+        val mFilePath = Environment.getExternalStorageDirectory().toString() + "/" + mFileName + ".pdf"
 
 
         try {
             PdfWriter.getInstance(mDoc, FileOutputStream(mFilePath))
             mDoc.open()
 
-            val mText =  edit_text_content.text.toString()
+            val table = PdfPTable(1)
 
-            mDoc.addAuthor("Anderson")
+            var c1 = PdfPCell(Phrase("Relatório de célula"))
+            c1.horizontalAlignment = Element.ALIGN_LEFT
 
-            mDoc.add(Paragraph(mText))
+
+            table.addCell(c1)
+
+            c1 = PdfPCell(Phrase("Header 2"))
+            c1.horizontalAlignment = Element.ALIGN_LEFT
+            table.addCell(c1)
+
+
+            c1 = PdfPCell(Phrase("Header 3"))
+            c1.horizontalAlignment = Element.ALIGN_LEFT
+            table.addCell(c1)
+
+            table.addCell("1.0")
+            table.addCell("1.1")
+            table.addCell("1.2")
+            table.addCell("2.1")
+            table.addCell("2.2")
+            table.addCell("2.3")
+            table.addCell("2.4")
+            table.addCell("2.5")
+
+
+            table.addCell(c1)
+
+            mDoc.add(table)
             mDoc.close()
 
-            Toast.makeText(this, "$mFileName.pdf  \n está salvo em \n$mFilePath", Toast.LENGTH_LONG).show()
-
+            Toast.makeText(this, "Salvo em \n$mFilePath", Toast.LENGTH_LONG).show()
 
 
         } catch (e: Exception) {
