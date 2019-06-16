@@ -30,6 +30,7 @@
 
         <activity android:name=".RelatorioActivity"/>
         <activity android:name=".PdfCreatorActivity"/>
+        <activity android:name=".Validacao"/>
 
     </application>
 

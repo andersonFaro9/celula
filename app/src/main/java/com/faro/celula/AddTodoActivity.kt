@@ -35,10 +35,7 @@ class AddTodoActivity : AppCompatActivity() {
         validaDados()
         salvaDados()
 
-
     }
-
-
 
     fun validaDados() {
 

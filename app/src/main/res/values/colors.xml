@@ -25,6 +25,7 @@
     <color name="color_hint">#1E000000</color>
 
     <color name="botao_enviar">#E0E0E0</color>
+    <color name="botao_enviar_relatorio">#41E0E0E0</color>
 
 
     <color name="color_loading">#e0267d</color>
