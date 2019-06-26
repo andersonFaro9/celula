@@ -16,11 +16,13 @@ import io.realm.Realm
 import io.realm.RealmConfiguration
 import kotlinx.android.synthetic.main.activity_add.*
 
+
 class Configuracao : Application() {
     override fun onCreate() {
         Realm.init(applicationContext)
-        val config = RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build()
-        Realm.setDefaultConfiguration(config)
+         RealmConfiguration.Builder()
+             .name("celula.realm").schemaVersion(0).migration(MyMigration()).build()
+
         super.onCreate()
     }
 }

@@ -28,9 +28,9 @@
         <activity android:name=".AddTodoActivity"/>
         <activity android:name=".UpdateActivity"/>
 
-        <activity android:name=".RelatorioActivity"/>
-        <activity android:name=".PdfCreatorActivity"/>
-        <activity android:name=".Validacao"/>
+        <activity android:screenOrientation="portrait" android:name=".RelatorioActivity"/>
+
+
 
     </application>
 

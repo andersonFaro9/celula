@@ -27,9 +27,12 @@
     <color name="botao_enviar">#E0E0E0</color>
     <color name="botao_enviar_relatorio">#41E0E0E0</color>
 
+    <color name="style_input">#64B5F6</color>
+    <color name="sstyle_input">#FC1111</color>
 
-    <color name="color_loading">#e0267d</color>
-    <color name="background_splash">#e0267d</color>
+    <color name="style_linha">#171C20</color>
+
+
     <color name="primary_material_dark">#fff</color>
     <color name="primary_material_dark_text_selected_for_background_lilac">#3a011c</color>
     <color name="primary_material_dark_text_selected_for_background_white">#0bbae2</color>
