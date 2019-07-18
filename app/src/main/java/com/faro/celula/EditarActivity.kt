@@ -21,7 +21,7 @@ class EditarActivity : AppCompatActivity() {
         intent.getStringExtra("id")
     }
 
-     var celulaModel: CelulaModel? = null
+     var celulaModel: Nota? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +30,9 @@ class EditarActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_update)
 
-        celulaModel = realm.where(CelulaModel::class.java).equalTo("id", this.id).findFirst()
+        celulaModel = realm.where(Nota::class.java).equalTo("id", this.id).findFirst()
 
-        novoTitulo.setText(celulaModel?.titulo)
+        novoTitulo.setText(celulaModel?.nota)
         novoDetalhe.setText(celulaModel?.detalhes)
 
         valida()
@@ -66,7 +66,7 @@ class EditarActivity : AppCompatActivity() {
             if (!novoTitulo.text.isEmpty() && !novoDetalhe.text.isEmpty()) {
 
                 realm.executeTransaction {
-                    this.celulaModel?.titulo = novoTitulo.text.toString()
+                    this.celulaModel?.nota = novoTitulo.text.toString()
                     this.celulaModel?.detalhes = novoDetalhe.text.toString()
                     startActivity(Intent(this, MainActivity::class.java))
                 }

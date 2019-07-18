@@ -17,9 +17,9 @@ class CelulaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val deleta: ImageButton = itemView.findViewById(R.id.deleta)
     val context: Context = itemView.context
 
-    fun bind(model: CelulaModel) {
+    fun bind(model: Nota) {
 
-        val titleText: String = model.titulo.toString()
+        val titleText: String = model.nota.toString()
         val detalhesText: String = model.detalhes.toString()
 
         titulo.text = titleText
@@ -35,7 +35,7 @@ class CelulaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 .setPositiveButton("Sim") { dialogInterface, i ->
 
                     realm.executeTransaction {
-                        realm.where(CelulaModel::class.java).equalTo("id", model.id).findFirst()?.deleteFromRealm()
+                        realm.where(Nota::class.java).equalTo("id", model.id).findFirst()?.deleteFromRealm()
 
                         itemView.context.startActivity(Intent(itemView.context, MainActivity::class.java))
 

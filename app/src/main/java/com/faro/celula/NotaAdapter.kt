@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 
-class NotaAdapter(todos: ArrayList<CelulaModel>) : RecyclerView.Adapter<CelulaViewHolder>() {
+class NotaAdapter(todos: ArrayList<Nota>) : RecyclerView.Adapter<CelulaViewHolder>() {
 
-    var items: ArrayList<CelulaModel> = todos
+    var items: ArrayList<Nota> = todos
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): CelulaViewHolder {
 

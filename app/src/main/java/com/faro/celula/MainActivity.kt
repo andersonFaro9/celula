@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
 
         adicionarDados()
 
-        val todos: ArrayList<CelulaModel> = this.getTodos()
+        val todos: ArrayList<Nota> = this.getTodos()
         adapter = NotaAdapter(todos)
 
         recyclerView.layoutManager = GridLayoutManager(this, 2)
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
         }
     }
 
-    fun deixarRecycleViewInvisivel(celulaModel: ArrayList<CelulaModel>) {
+    fun deixarRecycleViewInvisivel(celulaModel: ArrayList<Nota>) {
 
         when {
             !celulaModel.isEmpty() -> {
@@ -98,8 +98,8 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getTodos(): ArrayList<CelulaModel> {
-        val arraylist = ArrayList(this.realm.where(CelulaModel::class.java).findAll())
+    private fun getTodos(): ArrayList<Nota> {
+        val arraylist = ArrayList(this.realm.where(Nota::class.java).findAll())
         return arraylist
     }
 

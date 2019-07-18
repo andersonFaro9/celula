@@ -9,7 +9,8 @@ class Configuracao : Application() {
     override fun onCreate() {
         Realm.init(applicationContext)
          RealmConfiguration.Builder()
-             .name("celula.realm").schemaVersion(0).migration(CelulaMigration()).build()
+             .name("celula.realm").schemaVersion(1).migration(CelulaMigration())
+             .deleteRealmIfMigrationNeeded().build()
 
         super.onCreate()
     }

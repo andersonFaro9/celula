@@ -68,9 +68,9 @@ class AdicionaDadosActivity : AppCompatActivity() {
             if (!titulo.text.isEmpty() && !detalhes.text.isEmpty()) {
 
                 this.realm.executeTransaction {
-                    val todo = this.realm.createObject(CelulaModel::class.java, UUID.randomUUID().toString())
+                    val todo = this.realm.createObject(Nota::class.java, UUID.randomUUID().toString())
 
-                    todo.titulo = titulo.text.toString()
+                    todo.nota = titulo.text.toString()
                     todo.detalhes = detalhes.text.toString()
 
                     startActivity(Intent(this, MainActivity::class.java))
