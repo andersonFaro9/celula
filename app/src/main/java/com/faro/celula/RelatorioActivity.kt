@@ -21,6 +21,7 @@
     import com.itextpdf.text.Font.*
 
 
+
     class RelatorioActivity : AppCompatActivity() {
 
         val STORAGE_CODE:Int = 100
@@ -95,7 +96,6 @@
                 val nomesMembrosCelula=  edit_nomes_membros_celula.text.toString()
                 val nomesVisitantesCelula=  edit_nomes_visitantes_celula.text.toString()
                 val informe=  edit_informe.text.toString()
-
 
 
                 var c1 = PdfPCell(Phrase("_____________RELATÓRIO DE CÉLULA_____________"))

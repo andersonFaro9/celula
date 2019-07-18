@@ -5,21 +5,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 
-class NotaAdapter(todos: ArrayList<Nota>) : RecyclerView.Adapter<NotaViewHolder>() {
+class NotaAdapter(todos: ArrayList<CelulaModel>) : RecyclerView.Adapter<CelulaViewHolder>() {
 
-    var items: ArrayList<Nota> = todos
+    var items: ArrayList<CelulaModel> = todos
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): NotaViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): CelulaViewHolder {
 
         val layoutInflater = LayoutInflater.from(viewGroup.context)
-        return NotaViewHolder(layoutInflater.inflate(R.layout.cardview_list_item, viewGroup, false))
+        return CelulaViewHolder(layoutInflater.inflate(R.layout.cardview_list_item, viewGroup, false))
 
     }
 
     override fun getItemCount(): Int = this.items.size
 
-    override fun onBindViewHolder(notaViewHolder: NotaViewHolder, position: Int) {
-        notaViewHolder.bind(this.items[position])
+    override fun onBindViewHolder(celulaViewHolder: CelulaViewHolder, position: Int) {
+        celulaViewHolder.bind(this.items[position])
 
     }
 

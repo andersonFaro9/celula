@@ -1,7 +1,6 @@
 package com.faro.celula
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -9,11 +8,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 
-import android.widget.Toast
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_update.*
 
-class UpdateActivity : AppCompatActivity() {
+class EditarActivity : AppCompatActivity() {
 
     val realm by lazy {
         Realm.getDefaultInstance()
@@ -23,7 +21,7 @@ class UpdateActivity : AppCompatActivity() {
         intent.getStringExtra("id")
     }
 
-     var todo: Nota? = null
+     var celulaModel: CelulaModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +30,10 @@ class UpdateActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_update)
 
-        todo = realm.where(Nota::class.java).equalTo("id", this.id).findFirst()
+        celulaModel = realm.where(CelulaModel::class.java).equalTo("id", this.id).findFirst()
 
-        titleInput.setText("")
-        descriptionInput.setText("")
+        novoTitulo.setText(celulaModel?.titulo)
+        novoDetalhe.setText(celulaModel?.detalhes)
 
         valida()
 
@@ -64,12 +62,12 @@ class UpdateActivity : AppCompatActivity() {
         editar?.setOnClickListener {
              var view: View? = null
 
-            titleInput.text.isEmpty()
-            if (!titleInput.text.isEmpty() && !descriptionInput.text.isEmpty()) {
+            novoTitulo.text.isEmpty()
+            if (!novoTitulo.text.isEmpty() && !novoDetalhe.text.isEmpty()) {
 
                 realm.executeTransaction {
-                    this.todo?.nota = titleInput.text.toString()
-                    this.todo?.detalhes = descriptionInput.text.toString()
+                    this.celulaModel?.titulo = novoTitulo.text.toString()
+                    this.celulaModel?.detalhes = novoDetalhe.text.toString()
                     startActivity(Intent(this, MainActivity::class.java))
                 }
 

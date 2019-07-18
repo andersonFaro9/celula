@@ -1,3 +1,9 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -5,8 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
+
         android:background="#FFF"
         tools:context=".MainActivity" android:id="@+id/frameLayout">
+
 
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -23,6 +31,7 @@
             android:layout_height="88dp"
             android:gravity="center"
             android:visibility="visible"
+            android:textAllCaps="false"
             android:textStyle="normal"
             android:textColor="@color/color_titulo"
             android:text="@string/texto_apresentacao"
@@ -30,30 +39,33 @@
             android:lineSpacingExtra="5sp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="16sp"
-            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="34dp"
             app:layout_constraintTop_toBottomOf="@+id/celula"/>
 
     <ImageButton
             android:id="@+id/adicionar"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="67dp"
+            android:layout_height="64dp"
             android:src="@drawable/ic_add"
             android:background="@null"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="4dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="6dp"
             app:layout_constraintEnd_toEndOf="parent"
-    />
+            android:layout_marginBottom="24dp" app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageView
-            android:layout_width="241dp"
-            android:layout_height="192dp" app:srcCompat="@drawable/organize"
-            android:id="@+id/celula" android:layout_marginTop="20dp"
+            android:layout_width="157dp"
+            android:layout_height="147dp" app:srcCompat="@drawable/ic_organize"
+            android:id="@+id/celula" android:layout_marginTop="63dp"
             android:visibility="visible"
+
             app:layout_constraintTop_toBottomOf="@+id/recyclerView"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
 
+
 </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
 
 

@@ -9,46 +9,43 @@ import android.widget.ImageButton
 import android.widget.TextView
 import io.realm.Realm
 
-class NotaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class CelulaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val titulo: TextView = itemView.findViewById(R.id.titulo)
     val detalhes: TextView = itemView.findViewById(R.id.detalhes)
 
-    //val editaNota: ImageButton = itemView.findViewById(R.id.editaNota)
-
-    val deleteNota: ImageButton = itemView.findViewById(R.id.deleteNota)
+    val deleta: ImageButton = itemView.findViewById(R.id.deleta)
     val context: Context = itemView.context
 
-    fun bind(model: Nota) {
+    fun bind(model: CelulaModel) {
 
-        val titleText: String = model.nota.toString()
-        val descriptionText: String = model.detalhes.toString()
+        val titleText: String = model.titulo.toString()
+        val detalhesText: String = model.detalhes.toString()
 
         titulo.text = titleText
-        detalhes.text = descriptionText
+        detalhes.text = detalhesText
 
-
-        deleteNota.setOnClickListener {
+        deleta.setOnClickListener {
             val realm = Realm.getDefaultInstance()
 
             AlertDialog.Builder(this.context)
 
-                .setMessage("Deseja excluir?")
+                .setMessage("Excluir?")
 
                 .setPositiveButton("Sim") { dialogInterface, i ->
 
                     realm.executeTransaction {
-                        realm.where(Nota::class.java).equalTo("id", model.id).findFirst()?.deleteFromRealm()
+                        realm.where(CelulaModel::class.java).equalTo("id", model.id).findFirst()?.deleteFromRealm()
 
                         itemView.context.startActivity(Intent(itemView.context, MainActivity::class.java))
 
                     }
 
-                }.setNegativeButton("Não", null).create().show()
+                }.setNegativeButton("", null).create().show()
         }
 
         itemView.setOnClickListener {
-            val intent = Intent(context, UpdateActivity::class.java)
+            val intent = Intent(context, EditarActivity::class.java)
 
             intent.putExtra("id", model.id)
             context.startActivity(intent)

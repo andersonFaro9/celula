@@ -1,12 +1,8 @@
 package com.faro.celula
 
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.os.SystemClock
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,12 +12,9 @@ import android.view.View
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_add.*
 import java.util.*
-import android.provider.AlarmClock
 
 
-
-
-class AddTodoActivity : AppCompatActivity() {
+class AdicionaDadosActivity : AppCompatActivity() {
 
     val realm by lazy { Realm.getDefaultInstance() }
 
@@ -72,12 +65,12 @@ class AddTodoActivity : AppCompatActivity() {
 
         salva.setOnClickListener {
 
-            if (!nota.text.isEmpty() && !detalhes.text.isEmpty()) {
+            if (!titulo.text.isEmpty() && !detalhes.text.isEmpty()) {
 
                 this.realm.executeTransaction {
-                    val todo = this.realm.createObject(Nota::class.java, UUID.randomUUID().toString())
+                    val todo = this.realm.createObject(CelulaModel::class.java, UUID.randomUUID().toString())
 
-                    todo.nota = nota.text.toString()
+                    todo.titulo = titulo.text.toString()
                     todo.detalhes = detalhes.text.toString()
 
                     startActivity(Intent(this, MainActivity::class.java))

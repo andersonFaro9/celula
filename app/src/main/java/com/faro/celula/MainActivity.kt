@@ -1,11 +1,7 @@
 package com.faro.celula
 
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.SystemClock
 import android.provider.AlarmClock
 import android.support.v7.app.AppCompatActivity
 import io.realm.Realm
@@ -36,30 +32,30 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
 
         setContentView(R.layout.activity_main)
 
-        addTodo()
+        adicionarDados()
 
-        val todos: ArrayList<Nota> = this.getTodos()
+        val todos: ArrayList<CelulaModel> = this.getTodos()
         adapter = NotaAdapter(todos)
 
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.adapter = adapter
 
-        invisibleRecycleView(todos)
+        deixarRecycleViewInvisivel(todos)
 
 
     }
 
-    private fun addTodo() {
+    private fun adicionarDados() {
         adicionar.setOnClickListener {
 
-            startActivity(Intent(this, AddTodoActivity::class.java))
+            startActivity(Intent(this, AdicionaDadosActivity::class.java))
         }
     }
 
-    fun invisibleRecycleView(todos: ArrayList<Nota>) {
+    fun deixarRecycleViewInvisivel(celulaModel: ArrayList<CelulaModel>) {
 
         when {
-            !todos.isEmpty() -> {
+            !celulaModel.isEmpty() -> {
                 recyclerView.visibility = View.VISIBLE;
                 texto_vazio.visibility = View.GONE;
                 celula.visibility = View.GONE
@@ -102,8 +98,8 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getTodos(): ArrayList<Nota> {
-        val arraylist = ArrayList(this.realm.where(Nota::class.java).findAll())
+    private fun getTodos(): ArrayList<CelulaModel> {
+        val arraylist = ArrayList(this.realm.where(CelulaModel::class.java).findAll())
         return arraylist
     }
 
