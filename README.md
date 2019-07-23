@@ -4,4 +4,4 @@
 
 
 
-![nota_celula](https://user-images.githubusercontent.com/3237047/59264478-9269f780-8c19-11e9-89bc-8e2a2c3a3716.png)
+![banner_celula](https://user-images.githubusercontent.com/3237047/61488707-4f6d1380-a97f-11e9-8694-66d3e370dc44.png)
