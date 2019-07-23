@@ -56,7 +56,25 @@ import com.itextpdf.text.FontFactory
 
         }
 
+        override fun onCreateOptionsMenu(menu: Menu): Boolean {
+            menuInflater.inflate(R.menu.menu_form, menu)
+            return true
+        }
 
+        override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+            when {
+
+                item.itemId == R.id.fechar -> {
+                   finish()
+
+                    return true
+                }
+
+            }
+
+            return super.onOptionsItemSelected(item)
+        }
 
         override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
