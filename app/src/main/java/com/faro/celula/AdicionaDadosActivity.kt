@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_add.*
 import java.util.*
 
 
-class AdicionaDadosActivity : AppCompatActivity() {
+class AdicionaDadosActivity : AppCompatActivity(), Valida {
 
     val realm by lazy { Realm.getDefaultInstance() }
 
@@ -30,7 +30,32 @@ class AdicionaDadosActivity : AppCompatActivity() {
 
     }
 
-    fun validaDados() {
+     override fun validaDados() {
+
+         titulo.addTextChangedListener(object : TextWatcher {
+
+             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                 salva.visibility = View.INVISIBLE
+             }
+
+             override fun afterTextChanged(s: Editable?) {
+
+                 if (!titulo.text.isEmpty()) {
+                     salva.visibility = View.VISIBLE
+                     salva.setTextColor(Color.parseColor("#A32E1A"))
+
+                 }
+
+
+             }
+
+             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+             }
+
+         })
+
+
 
         detalhes.addTextChangedListener(object : TextWatcher {
 
@@ -40,16 +65,15 @@ class AdicionaDadosActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
 
-                salva.visibility = View.VISIBLE
-                salva.setTextColor(Color.parseColor("#297AE0"))
+                salva.visibility = View.INVISIBLE
+                salva.setTextColor(Color.parseColor("#A32E1A"))
 
-                when {
-                    detalhes.text.isEmpty() -> {
-                        salva.visibility = View.INVISIBLE
-                    }
-
-                    else -> salvaDados()
+                if (!detalhes.text.isEmpty()) {
+                    salva.visibility = View.VISIBLE
+                    salvaDados()
                 }
+
+                else salva.visibility = View.INVISIBLE
 
             }
 
@@ -61,7 +85,7 @@ class AdicionaDadosActivity : AppCompatActivity() {
 
     }
 
-    private fun salvaDados() {
+    override  fun salvaDados() {
 
         salva.setOnClickListener {
 

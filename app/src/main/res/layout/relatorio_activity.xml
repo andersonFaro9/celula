@@ -22,7 +22,7 @@
             android:layout_width="110dp"
             android:layout_height="62dp"
             android:gravity="top"
-            android:hint="líder"
+            android:hint="Líder"
             android:inputType="textMultiLine"
             android:lines="5"
             android:textSize="14sp"
@@ -173,7 +173,7 @@
             android:layout_height="58dp"
             android:gravity="top"
             android:textSize="14sp"
-            android:hint="Endereço"
+            android:hint="Endereço da célula"
             android:inputType="textMultiLine"
             android:lines="10"
             android:layout_marginTop="8dp"
@@ -191,7 +191,7 @@
             android:layout_marginStart="4dp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/edit_informe"/>
     <TextView
-            android:text="RELATÓRIO DE CÉLULA"
+            android:text="Relatório da Célula"
             android:layout_width="0dp"
             android:layout_height="27dp"
             android:id="@+id/textView" android:textSize="16sp"

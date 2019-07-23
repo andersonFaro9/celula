@@ -1,25 +1,30 @@
     package com.faro.celula
 
     import android.Manifest
+    import android.content.Intent
     import android.content.pm.PackageManager
+    import android.graphics.Color
     import android.os.Build
     import android.os.Bundle
     import android.os.Environment
+    import android.provider.AlarmClock
     import android.support.v7.app.AppCompatActivity
+    import android.view.Menu
+    import android.view.MenuItem
     import android.widget.Toast
-    import android.widget.Toast.*
-    import kotlinx.android.synthetic.main.relatorio_activity.*
+    import android.widget.Toast.LENGTH_SHORT
+    import android.widget.Toast.makeText
+    import com.itextpdf.text.*
+    import com.itextpdf.text.Font
+    import com.itextpdf.text.pdf.PdfPCell
+    import com.itextpdf.text.pdf.PdfPTable
     import com.itextpdf.text.pdf.PdfWriter
+    import kotlinx.android.synthetic.main.relatorio_activity.*
     import java.io.FileOutputStream
     import java.text.SimpleDateFormat
     import java.util.*
-    import com.itextpdf.text.*
+import com.itextpdf.text.FontFactory
     import com.itextpdf.text.Phrase
-    import com.itextpdf.text.pdf.PdfPCell
-    import com.itextpdf.text.pdf.PdfPTable
-    import com.itextpdf.text.BaseColor
-    import com.itextpdf.text.Font.*
-
 
 
     class RelatorioActivity : AppCompatActivity() {
@@ -51,6 +56,8 @@
 
         }
 
+
+
         override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
@@ -73,10 +80,9 @@
 
             val mDoc = Document(PageSize.A4, 0f, 0f, 0f, 0f)
 
+            val mFileName = SimpleDateFormat( "EE_MMM_dd_HH:mm:ss_yyyy", Locale.getDefault()).format(System.currentTimeMillis())
 
-            val mFileName = SimpleDateFormat( "yyyy-MM-dd hh:mm", Locale.getDefault()).format(System.currentTimeMillis())
-
-            val mFilePath = Environment.getExternalStorageDirectory().toString()  + "/" + mFileName + ".pdf"
+            val mFilePath = Environment.getExternalStorageDirectory().toString()  + "/" + "celula_" + mFileName + ".pdf"
 
             try {
                 PdfWriter.getInstance(mDoc, FileOutputStream(mFilePath))
@@ -98,82 +104,85 @@
                 val informe=  edit_informe.text.toString()
 
 
-                var c1 = PdfPCell(Phrase("_____________RELATÓRIO DE CÉLULA_____________"))
+                val titulo = FontFactory.getFont(FontFactory.TIMES, 17f, Font.BOLD)
+                var c1 = PdfPCell(Phrase("Relatório da Célula", titulo))
+
                 c1.horizontalAlignment = Element.ALIGN_CENTER
 
                 table.addCell(c1)
 
 
+                val topico = FontFactory.getFont(FontFactory.TIMES, 14f, Font.BOLD)
 
-                c1= PdfPCell(Phrase("CÉLULA:"))
+                c1= PdfPCell(Phrase("Célula:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
 
                 table.addCell(nomeCelula)
 
 
-                c1= PdfPCell(Phrase("ENDEREÇO:"))
+                c1= PdfPCell(Phrase("Endereço:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(enderecoCelula)
 
-                c1= PdfPCell(Phrase("LÍDER:"))
+                c1= PdfPCell(Phrase("Líder:"))
 
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(liderCelula)
 
-                c1= PdfPCell(Phrase("ANFITRIÃO:"))
+                c1= PdfPCell(Phrase("Anfitrião:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(anfitriaoCelula)
 
-                c1= PdfPCell(Phrase("DATA:"))
+                c1= PdfPCell(Phrase("Data:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(dataCelula)
 
-                c1= PdfPCell(Phrase("DIA:"))
+                c1= PdfPCell(Phrase("Dia:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(dia)
 
-                c1= PdfPCell(Phrase("HORA:"))
+                c1= PdfPCell(Phrase("Hora:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(horaCelula)
 
-                c1= PdfPCell(Phrase("TEMA DA MENSAGEM:"))
+                c1= PdfPCell(Phrase("Tema da Mensagem:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(temaCelula)
 
-                c1= PdfPCell(Phrase("TEXTO:"))
+                c1= PdfPCell(Phrase("Texto do Tema:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
 
                 table.addCell(textoCelula)
 
 
-                c1= PdfPCell(Phrase("NOMES MEMBROS DA CÉLULA:"))
+                c1= PdfPCell(Phrase("Nomes(membros) da Célula:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(nomesMembrosCelula)
 
-                c1= PdfPCell(Phrase("NOMES DOS VISITANTES:"))
+                c1= PdfPCell(Phrase("Nomes dos Visitantes:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(nomesVisitantesCelula)
 
 
-                c1= PdfPCell(Phrase("(OPCIONAL) INFORME: Mudança de endereço, horário, por que não teve célula, ausência de alguém da liderança da célula:"))
+                c1= PdfPCell(Phrase("(OPCIONAL) Informe: Mudança de endereço, horário, porque não teve célula, ausência de alguém da liderança da célula:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(informe)
 
 
-
-                c1 = PdfPCell(Phrase("E todos os dias, no templo e nas casas, não cessavam de ensinar, e de anunciar a Jesus Cristo(Atos 5:42)"))
+                val topico2 = FontFactory.getFont(FontFactory.TIMES_ITALIC, 13f, Font.BOLD)
+                c1 = PdfPCell(Phrase("E todos os dias, no templo e nas casas, não cessavam de ensinar, e de anunciar a Jesus Cristo (Atos 5:42)",topico2 ))
                 c1.horizontalAlignment = Element.ALIGN_BOTTOM
                 table.addCell(c1)
 
@@ -181,8 +190,9 @@
                 mDoc.add(table)
 
                 mDoc.close()
-
-                Toast.makeText(this, "Salvo em \n$mFilePath", Toast.LENGTH_LONG).show()
+                //Salvo em
+                //$mFilePath
+                Toast.makeText(this, "Salvo na memória do celular", Toast.LENGTH_LONG).show()
 
 
             } catch (e: Exception) {
