@@ -90,6 +90,8 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
                 val i = Intent(this, RelatorioActivity::class.java)
                 startActivity(i)
 
+
+
                 return true
             }
 

@@ -47,13 +47,17 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_endereco_celula"
             app:layout_constraintStart_toEndOf="@+id/edit_lider_celula" android:layout_marginStart="16dp">
     </EditText>
-    <EditText
+
+
+    <com.vicmikhailau.maskededittext.MaskedEditText
+            app:mask="##/##/####"
             android:id="@+id/edit_data_celula"
             android:layout_width="0dp"
             android:layout_height="61dp"
             android:gravity="top"
             android:maxLength="10"
-            android:hint="Data: 00.00.0000"
+
+            android:hint="29.12.2019"
             android:inputType="date"
             android:lines="5"
             android:textSize="14sp"
@@ -61,8 +65,12 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="8dp"
 
-            app:layout_constraintTop_toBottomOf="@+id/edit_lider_celula">
-    </EditText>
+            app:layout_constraintTop_toBottomOf="@+id/edit_lider_celula"
+
+
+    />
+
+
     <EditText
             android:id="@+id/edit_dia_celula"
             android:layout_width="257dp"
@@ -78,21 +86,22 @@
             android:layout_marginStart="8dp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/edit_anfitriao_celula">
     </EditText>
-    <EditText
+
+    <com.vicmikhailau.maskededittext.MaskedEditText
+            app:mask="##:##"
             android:id="@+id/edit_hora_celula"
             android:layout_width="117dp"
             android:layout_height="58dp"
             android:gravity="top"
-            android:hint="Hora"
-            android:maxLength="6"
+            android:hint="19:30"
+            android:maxLength="5"
             android:inputType="time"
-            android:lines="1"
-            android:textSize="14sp"
-
-            android:layout_marginTop="8dp"
+            android:lines="1" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/edit_data_celula" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp">
-    </EditText>
+            android:layout_marginStart="8dp"/>
+
+
+
     <EditText
             android:id="@+id/edit_tema_celula"
             android:layout_width="270dp"
@@ -102,7 +111,7 @@
             android:inputType="textMultiLine"
             android:lines="10"
             android:textSize="14sp"
-
+            android:maxLength="15"
             app:layout_constraintStart_toEndOf="@+id/edit_hora_celula"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/edit_dia_celula">
@@ -113,9 +122,10 @@
             android:layout_width="385dp"
             android:layout_height="51dp"
             android:gravity="top"
-            android:hint="Texto"
+            android:hint="Texto da mensagem"
             android:inputType="textMultiLine"
             android:lines="10"
+            android:maxLength="40"
             android:textSize="14sp"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/edit_tema_celula"
@@ -129,7 +139,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:gravity="top"
-            android:maxLength="13"
+            android:maxLength="20"
             android:inputType="text"
             android:hint="Nome da célula"
             android:textSize="14sp"
@@ -206,33 +216,25 @@
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:textStyle="bold"/>
     <TextView
-            android:text="____________________________________________________________________________________"
-            android:layout_width="0dp"
-            android:layout_height="24dp"
-            android:backgroundTint="@color/style_linha"
-            android:id="@+id/linha_divisora" android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/edit_texto_celula"/>
-    <TextView
-            android:text="NOMES DOS MEMBROS DA CÉLULA"
+            android:text="Membros da célula"
             android:layout_width="234dp"
             android:layout_height="20dp"
-            android:id="@+id/membros_celula" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.497" android:layout_marginTop="4dp"
-            app:layout_constraintTop_toBottomOf="@+id/linha_divisora" android:textStyle="bold"
-            android:textAlignment="center"/>
+            android:id="@+id/membros_celula"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textAlignment="textStart" android:layout_marginStart="5dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/edit_texto_celula"/>
     <TextView
-            android:text="NOMES DOS VISITANTES"
+            android:text="Nomes dos visitantes"
             android:layout_width="234dp"
             android:layout_height="20dp"
-            android:id="@+id/visitantes" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.496"
+            android:textAllCaps="false"
+            android:id="@+id/visitantes"
+            app:layout_constraintStart_toStartOf="parent"
+
             android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/edit_nomes_membros_celula"
-            android:textAlignment="center" android:textStyle="bold"/>
+            android:textAlignment="textStart" android:textStyle="bold" android:layout_marginStart="5dp"/>
 
 
     <EditText

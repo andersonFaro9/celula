@@ -39,6 +39,8 @@ import com.itextpdf.text.FontFactory
 
             setContentView(R.layout.relatorio_activity)
 
+
+
             salva_pdf?.setOnClickListener {
                 when {
                     Build.VERSION.SDK_INT > Build.VERSION_CODES.M ->
@@ -47,14 +49,17 @@ import com.itextpdf.text.FontFactory
 
                         requestPermissions(permissions, STORAGE_CODE)
 
+
                     } else {
                             salvaDados()
+
                     }
                     else -> salvaDados()
                 }
             }
 
         }
+
 
         override fun onCreateOptionsMenu(menu: Menu): Boolean {
             menuInflater.inflate(R.menu.menu_form, menu)
@@ -129,7 +134,6 @@ import com.itextpdf.text.FontFactory
 
                 table.addCell(c1)
 
-
                 val topico = FontFactory.getFont(FontFactory.TIMES, 14f, Font.BOLD)
 
                 c1= PdfPCell(Phrase("Célula:", topico))
@@ -155,7 +159,7 @@ import com.itextpdf.text.FontFactory
                 table.addCell(c1)
                 table.addCell(anfitriaoCelula)
 
-                c1= PdfPCell(Phrase("Data:", topico))
+                c1 = PdfPCell(Phrase("Data:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(dataCelula)
@@ -187,7 +191,7 @@ import com.itextpdf.text.FontFactory
                 table.addCell(c1)
                 table.addCell(nomesMembrosCelula)
 
-                c1= PdfPCell(Phrase("Nomes dos Visitantes:", topico))
+                c1= PdfPCell(Phrase("Nomes(Visitantes) da Célula:", topico))
                 c1.horizontalAlignment = Element.ALIGN_LEFT
                 table.addCell(c1)
                 table.addCell(nomesVisitantesCelula)
@@ -200,6 +204,7 @@ import com.itextpdf.text.FontFactory
 
 
                 val topico2 = FontFactory.getFont(FontFactory.TIMES_ITALIC, 13f, Font.BOLD)
+
                 c1 = PdfPCell(Phrase("E todos os dias, no templo e nas casas, não cessavam de ensinar, e de anunciar a Jesus Cristo (Atos 5:42)",topico2 ))
                 c1.horizontalAlignment = Element.ALIGN_BOTTOM
                 table.addCell(c1)
@@ -226,9 +231,9 @@ import com.itextpdf.text.FontFactory
                 || edit_endereco_celula.text.isEmpty()
                 || edit_lider_celula.text.isEmpty()
                 || edit_anfitriao_celula.text.isEmpty()
-                || edit_data_celula.text.isEmpty()
+                || edit_data_celula.text!!.isEmpty()
                 || edit_dia_celula.text.isEmpty()
-                || edit_hora_celula.text.isEmpty()
+                || edit_hora_celula.text!!.isEmpty()
                 || edit_tema_celula.text.isEmpty()
                 || edit_texto_celula.text.isEmpty()
                 || edit_nomes_membros_celula.text.isEmpty()

@@ -39,9 +39,10 @@ class CelulaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
                         itemView.context.startActivity(Intent(itemView.context, MainActivity::class.java))
 
+
                     }
 
-                }.setNegativeButton("", null).create().show()
+                }.setNegativeButton("Cancelar", null).create().show()
         }
 
         itemView.setOnClickListener {

@@ -50,7 +50,7 @@
 
         <ImageButton
                 android:layout_width="20dp"
-                android:src="@drawable/ic_delete"
+                android:src="@drawable/fechar"
                 android:layout_height="20dp"
                 android:background="?android:selectableItemBackground"
                 android:id="@+id/deleta"
