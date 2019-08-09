@@ -11,10 +11,18 @@
 
         </style>
 
-    <style name="NumberPickerStyle">
-        <item name="android:textSize">22dp</item>
-        <item name="android:textColorPrimary">@color/colorAccent</item>
-        <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/colorAccent</item>
+
+
+    <style name="inputCelula" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorNota</item>
+        <item name="colorAccent">@color/colorNota</item>
+
+
     </style>
+
+
+
 
 </resources>
