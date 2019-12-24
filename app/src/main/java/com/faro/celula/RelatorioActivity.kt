@@ -9,7 +9,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.AlarmClock
 import android.provider.CalendarContract
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
@@ -75,6 +75,25 @@ class RelatorioActivity : AppCompatActivity() {
 
             item.itemId == R.id.fechar -> {
                 finish()
+
+                return true
+            }
+
+
+            item.itemId == R.id.relatorio -> {
+                val i = Intent(this, RelatorioActivity::class.java)
+                startActivity(i)
+
+
+
+                return true
+            }
+
+            item.itemId == R.id.comousar -> {
+                val i = Intent(this, ComoUsarActivity::class.java)
+                startActivity(i)
+
+
 
                 return true
             }

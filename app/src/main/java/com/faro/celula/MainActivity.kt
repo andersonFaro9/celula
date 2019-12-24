@@ -3,10 +3,11 @@ package com.faro.celula
 import android.content.Intent
 import android.os.Bundle
 import android.provider.AlarmClock
-import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import io.realm.Realm
 
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -14,15 +15,22 @@ import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+import io.realm.RealmConfiguration
+import java.io.FileNotFoundException
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
 
 
 class MainActivity : AppCompatActivity(), OnDeleteListener {
 
-    val realm by lazy {
-        Realm.getDefaultInstance()
-    }
 
     lateinit var adapter: NotaAdapter
+
+      val realm by lazy{
+        Realm.getDefaultInstance()
+      }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -34,7 +42,7 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
 
         adicionarDados()
 
-        val todos: ArrayList<Nota> = this.getTodos()
+        val todos: ArrayList<NotaBd> = this.getTodos()
         adapter = NotaAdapter(todos)
 
         recyclerView.layoutManager = GridLayoutManager(this, 2)
@@ -45,6 +53,14 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
 
     }
 
+    private fun getTodos(): ArrayList<NotaBd> {
+
+
+
+        val arraylist = ArrayList(this.realm.where(NotaBd::class.java).findAll())
+        return arraylist
+    }
+
     private fun adicionarDados() {
         adicionar.setOnClickListener {
 
@@ -52,7 +68,7 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
         }
     }
 
-    fun deixarRecycleViewInvisivel(celulaModel: ArrayList<Nota>) {
+    fun deixarRecycleViewInvisivel(celulaModel: ArrayList<NotaBd>) {
 
         when {
             !celulaModel.isEmpty() -> {
@@ -78,7 +94,7 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
             item.itemId == R.id.calendario -> {
                 val i = Intent(AlarmClock.ACTION_SET_ALARM)
                 i.putExtra(AlarmClock.EXTRA_MESSAGE, "Célula")
-                Toast.makeText(this,"Agende sua data e hora da célula", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Agende sua data e hora da célula", Toast.LENGTH_LONG).show()
 
                 startActivity(i)
 
@@ -95,14 +111,10 @@ class MainActivity : AppCompatActivity(), OnDeleteListener {
                 return true
             }
 
+
         }
 
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun getTodos(): ArrayList<Nota> {
-        val arraylist = ArrayList(this.realm.where(Nota::class.java).findAll())
-        return arraylist
     }
 
 

@@ -1,15 +1,14 @@
 package com.faro.celula
 
-import android.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import io.realm.Realm
 
-class CelulaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class CelulaViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
     val titulo: TextView = itemView.findViewById(R.id.titulo)
     val detalhes: TextView = itemView.findViewById(R.id.detalhes)
@@ -17,10 +16,10 @@ class CelulaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val deleta: ImageButton = itemView.findViewById(R.id.deleta)
     val context: Context = itemView.context
 
-    fun bind(model: Nota) {
+    fun bind(model: NotaBd) {
 
-        val titleText: String = model.nota.toString()
-        val detalhesText: String = model.detalhes.toString()
+        val titleText: String = model.assunto.toString()
+        val detalhesText: String = model.texto.toString()
 
         titulo.text = titleText
         detalhes.text = detalhesText
@@ -35,7 +34,7 @@ class CelulaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 .setPositiveButton("Sim") { dialogInterface, i ->
 
                     realm.executeTransaction {
-                        realm.where(Nota::class.java).equalTo("id", model.id).findFirst()?.deleteFromRealm()
+                        realm.where(NotaBd::class.java).equalTo("id", model.id).findFirst()?.deleteFromRealm()
 
                         itemView.context.startActivity(Intent(itemView.context, MainActivity::class.java))
 

@@ -1,13 +1,12 @@
 package com.faro.celula
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
 
-class NotaAdapter(todos: ArrayList<Nota>) : RecyclerView.Adapter<CelulaViewHolder>() {
+class NotaAdapter(todos: ArrayList<NotaBd>) : androidx.recyclerview.widget.RecyclerView.Adapter<CelulaViewHolder>() {
 
-    var items: ArrayList<Nota> = todos
+    var items: ArrayList<NotaBd> = todos
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): CelulaViewHolder {
 

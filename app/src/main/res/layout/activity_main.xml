@@ -4,7 +4,7 @@
             android:layout_height="match_parent"
             android:fillViewport="true">
 
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,10 +13,10 @@
         android:layout_margin="10dp"
 
         android:background="#FFF"
-        tools:context=".MainActivity" android:id="@+id/frameLayout">
+        tools:context=".MainActivity2" android:id="@+id/frameLayout">
 
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             android:id="@+id/adicionar"
             android:layout_width="67dp"
             android:layout_height="64dp"
-            android:src="@drawable/ic_add"
+            app:srcCompat="@drawable/ic_add"
             android:background="@null"
             android:layout_marginEnd="6dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
 
