@@ -2,7 +2,7 @@
 
 ## Um aplicativo feito para você não esquecer detalhes de sua célula evangélica!
 
-&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;![notacelula](https://user-images.githubusercontent.com/3237047/78364252-875eca00-7593-11ea-82d7-83fa37a8b455.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![notacelula](https://user-images.githubusercontent.com/3237047/78364252-875eca00-7593-11ea-82d7-83fa37a8b455.png)
 	
 
 <p align="center"> 
@@ -10,13 +10,7 @@
 
 </p>
 
-<p align="center"> 
-
- "
-</p>
-
 <p align="center">
-  
   
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
 </p>
