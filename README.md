@@ -6,7 +6,7 @@
 	
 
 <p align="center"> 
-	 🚀 O conceito de células evangélicas se baseia na necessidade da igreja de Cristo expandir-se, sim; a propagação de células numa cidade, aumenta ainda mais a oportunidade de outros conhecerem a palavra de Deus. Pensando nisso, eu criei o aplicativo notaCelula que facilita a criação de notinhas com titúlo e trechos de versos da bíblia, por exemplo, e o mais importante: A criação de relatórios com os detalhes da célula que precisam ser entregues aos pastores. Ao tempo que economiza-se papel e energia gastas numa impressão.<br/> <br/> "Marcos 16:15: E disse-lhes: Ide por todo o mundo, pregai o evangelho a toda criatura"
+	 🚀 O conceito de células evangélicas se baseia na necessidade da igreja de Cristo expandir-se, sim; a propagação de células numa cidade, aumenta ainda mais a oportunidade de outros conhecerem a palavra de Deus. Pensando nisso, eu criei o aplicativo notaCelula que facilita a criação de notinhas com titúlo e trechos de versos da bíblia, por exemplo, e o mais importante: A criação de relatórios em pdf que pode ser baixado com os detalhes da célula e são entregues aos pastores. Ao tempo que economiza-se papel e energia gastas numa impressão.<br/> <br/> "Marcos 16:15: E disse-lhes: Ide por todo o mundo, pregai o evangelho a toda criatura"
 
 </p>
 
