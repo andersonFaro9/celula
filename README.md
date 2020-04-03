@@ -2,16 +2,17 @@
 
 ## Um aplicativo feito para você não esquecer detalhes de sua célula evangélica!
 
-![notacelula](https://user-images.githubusercontent.com/3237047/78364252-875eca00-7593-11ea-82d7-83fa37a8b455.png)
+&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;![notacelula](https://user-images.githubusercontent.com/3237047/78364252-875eca00-7593-11ea-82d7-83fa37a8b455.png)
+	
 
 <p align="center"> 
-	 🚀 O conceito de células evangélicas se baseia na necessidade da igreja de Cristo expandir-se, sim; a propagação de células numa cidade, aumenta ainda mais a oportunidade de outros conhecerem a palavra de Deus. Pensando nisso, eu criei o aplicativo notaCelula que facilita a criação de notinhas com titúlo e trechos de versos da bíblia, por exemplo, e o mais importante: A criação de relatórios com os detalhes da célula que precisam ser entregues aos pastores. Ao tempo que economiza-se papel e energia gastas numa impressão.
+	 🚀 O conceito de células evangélicas se baseia na necessidade da igreja de Cristo expandir-se, sim; a propagação de células numa cidade, aumenta ainda mais a oportunidade de outros conhecerem a palavra de Deus. Pensando nisso, eu criei o aplicativo notaCelula que facilita a criação de notinhas com titúlo e trechos de versos da bíblia, por exemplo, e o mais importante: A criação de relatórios com os detalhes da célula que precisam ser entregues aos pastores. Ao tempo que economiza-se papel e energia gastas numa impressão.<br/> <br/> "Marcos 16:15: E disse-lhes: Ide por todo o mundo, pregai o evangelho a toda criatura"
+
 </p>
 
 <p align="center"> 
 
- "Marcos 16:15: E disse-lhes: Ide por todo o mundo, pregai o evangelho a toda criatura"
-
+ "
 </p>
 
 <p align="center">
